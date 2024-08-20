@@ -9,8 +9,6 @@ type TableOfContentContextType = {
 
 export const TableOfContentContext = createContext<TableOfContentContextType>({
   items: [],
-  updateItems: () => {},
-  indexedPaths: [],
 });
 
 export function TableOfContentProvider({
@@ -22,10 +20,6 @@ export function TableOfContentProvider({
 }) {
   const [itemsState, setItemsState] = useState(items);
   const [indexedPaths, setIndexedPaths] = useState<string[]>([]);
-
-  const updateItems = (items: TableOfContentItem[]) => {
-    setItemsState(items);
-  };
 
   useEffect(() => {
     if (!itemsState || itemsState.length === 0) {
@@ -41,13 +35,13 @@ export function TableOfContentProvider({
         });
       }
     });
-    
+
     setIndexedPaths(paths);
   }, [itemsState]);
 
   return (
     <TableOfContentContext.Provider
-      value={{ items: itemsState, updateItems, indexedPaths }}
+      value={{ items: itemsState, updateItems: setItemsState, indexedPaths }}
     >
       {children}
     </TableOfContentContext.Provider>

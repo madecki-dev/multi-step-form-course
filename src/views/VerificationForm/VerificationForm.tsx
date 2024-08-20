@@ -4,6 +4,47 @@ import styled from "styled-components";
 import { NavContext } from "../../components/Nav/NavProvider";
 import { Outlet } from "react-router-dom";
 import { Container } from "../../components/Container";
+import {
+  TableOfContent,
+  TableOfContentItem,
+} from "../../components/TableOfContent/TableOfContent";
+import { TableOfContentProvider } from "../../components/TableOfContent/TableOfContentContext";
+
+const tableOfContents: TableOfContentItem[] = [
+  {
+    id: "1",
+    title: "Business structure",
+    path: "/business-structure",
+    isDone: true,
+    children: [
+      {
+        id: "2",
+        title: "Business representative",
+        path: "/business-structure/representative",
+      },
+      {
+        id: "3",
+        title: "Business details",
+        path: "/business-structure/details",
+      },
+    ],
+  },
+  {
+    id: "4",
+    title: "Bank details",
+    path: "/bank-details",
+  },
+  {
+    id: "5",
+    title: "2 step authentication",
+    path: "/2-step-authentication",
+  },
+  {
+    id: "6",
+    title: "Overview",
+    path: "/overview",
+  },
+];
 
 export default function VerificationForm() {
   const { setTitle } = useContext(NavContext);
@@ -13,11 +54,14 @@ export default function VerificationForm() {
   });
 
   return (
-    <Container>
-      <Wrapper>
-        <Outlet />
-      </Wrapper>
-    </Container>
+    <TableOfContentProvider items={tableOfContents}>
+      <Container>
+        <Wrapper>
+          <TableOfContent />
+          <Outlet />
+        </Wrapper>
+      </Container>
+    </TableOfContentProvider>
   );
 }
 

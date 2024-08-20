@@ -1,62 +1,27 @@
 import { Link } from "react-router-dom";
-import styled, { DefaultTheme } from "styled-components";
-
-export const getListItemBackgroundColor = (
-  isActive = false,
-  isDone = false,
-  isChildren = false
-): keyof DefaultTheme["colors"] => {
-  if (isDone) {
-    return "success";
-  } else if (isActive) {
-    return "primary";
-  } else if (isChildren) {
-    return "placeholder";
-  } else {
-    return "white";
-  }
-};
-
-export const getLinkColor = (
-  isActive = false,
-  isChildren = false
-): keyof DefaultTheme["colors"] => {
-  if (isActive) {
-    return "primary";
-  } else if (isChildren) {
-    return "placeholder";
-  } else {
-    return "black";
-  }
-};
-
-export const getListItemTextColor = (
-  isActive = false,
-  isDone = false
-): keyof DefaultTheme["colors"] => {
-  if (isDone || isActive) return "white";
-  return "black";
-};
+import styled from "styled-components";
+import {
+  getLinkColor,
+  getListItemStatusIndicator,
+  getListItemTextColor,
+  ListItemProps,
+} from "./utils";
 
 export const TableOfContentWrapper = styled.nav`
-  margin-right: 300px;
+  margin-right: 18.75rem;
 `;
 
-export const ListVisualizer = styled.ul`
+export const ListVisualizer = styled.ol`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 33px;
-  border-radius: 100px;
+  width: 2.06rem;
+  border-radius: 6.25rem;
   padding: ${({ theme }) => theme.spacings[1]};
   background-color: ${({ theme }) => theme.colors.tertiary};
 `;
 
-export const ListItemWrapper = styled.div<{
-  isChildren?: boolean;
-  isDone?: boolean;
-  isActive?: boolean;
-}>`
+export const ListItemWrapper = styled.div<ListItemProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +29,7 @@ export const ListItemWrapper = styled.div<{
   height: ${({ isChildren }) => (isChildren ? "10px" : "26px")};
   border-radius: 50%;
   background-color: ${({ theme, isActive, isDone, isChildren }) =>
-    theme.colors[getListItemBackgroundColor(isActive, isDone, isChildren)]};
+    theme.colors[getListItemStatusIndicator({ isDone, isActive, isChildren })]};
   position: relative;
   margin-top: ${({ theme, isChildren }) =>
     isChildren ? theme.spacings[3] : theme.spacings[5]};
@@ -84,11 +49,11 @@ export const ListItemWrapper = styled.div<{
   }
 `;
 
-export const ListItem = styled.li<{ isChildren?: boolean }>`
+export const ListItem = styled.li<ListItemProps>`
   position: absolute;
-  left: 64px;
+  left: 4rem;
   top: ${({ isChildren }) => (isChildren ? "-5px" : "2px")};
-  width: 200px;
+  width: 12.5rem;
   list-style-type: none;
 `;
 

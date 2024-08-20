@@ -24,7 +24,12 @@ export default function useTableOfContent() {
 
     if (indexedPaths) {
       const item = items.find((item) => item.path === location.pathname);
-      item && navigate(indexedPaths[indexedPaths?.indexOf(item.path)! + 1]);
+      if (!item) return;
+
+      const currentPathIndex = indexedPaths?.indexOf(item.path);
+      if (currentPathIndex === -1) return;
+
+      item && navigate(indexedPaths[indexedPaths?.indexOf(item.path) + 1]);
     }
   };
 

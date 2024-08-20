@@ -28,41 +28,11 @@ export function TableOfContent() {
       <ListVisualizer>
         {items.map((item, index) => (
           <>
-            <ListItemWrapper
-              isActive={item.path === location.pathname}
-              isDone={item.isDone}
-              onClick={() => navigate(item.path)}
-            >
-              {item.isDone ? index + 1 : <img src={CheckIcon} alt="Done" />}
-              <ListItem key={item.path}>
-                <ListLink
-                  to={item.path}
-                  isActive={item.path === location.pathname}
-                >
-                  {item.title}
-                </ListLink>
-              </ListItem>
-            </ListItemWrapper>
-
+            <TableOfContentItem key={item.id} item={item} index={index} />
             {item.children && (
               <>
                 {item.children.map((child) => (
-                  <ListItemWrapper
-                    isChildren
-                    isActive={child.path === location.pathname}
-                    isDone={child.isDone}
-                    onClick={() => navigate(child.path)}
-                  >
-                    <ListItem key={child.path} isChildren>
-                      <ListLink
-                        to={child.path}
-                        isActive={child.path === location.pathname}
-                        isChildren
-                      >
-                        {child.title}
-                      </ListLink>
-                    </ListItem>
-                  </ListItemWrapper>
+                  <TableOfContentItem key={child.id} item={child} isChildren />
                 ))}
               </>
             )}
@@ -70,5 +40,40 @@ export function TableOfContent() {
         ))}
       </ListVisualizer>
     </TableOfContentWrapper>
+  );
+}
+
+function TableOfContentItem({
+  item,
+  index = 0,
+  isChildren = false,
+}: {
+  item: TableOfContentItem;
+  index?: number;
+  isChildren?: boolean;
+}) {
+  const navigate = useNavigate();
+
+  return (
+    <ListItemWrapper
+      isChildren={isChildren}
+      isActive={item.path === location.pathname}
+      isDone={item.isDone}
+      onClick={() => navigate(item.path)}
+    >
+      {!isChildren && (
+        <>{item.isDone ? <img src={CheckIcon} alt="Done" /> : index + 1}</>
+      )}
+
+      <ListItem key={item.path} isChildren={isChildren}>
+        <ListLink
+          to={item.path}
+          isActive={item.path === location.pathname}
+          isChildren={isChildren}
+        >
+          {item.title}
+        </ListLink>
+      </ListItem>
+    </ListItemWrapper>
   );
 }
