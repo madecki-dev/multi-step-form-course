@@ -1,3 +1,5 @@
+import { Outlet } from "react-router-dom";
+
 export default function BusinessStructure() {
-  return <>Business Structure</>;
+  return <Outlet />;
 }

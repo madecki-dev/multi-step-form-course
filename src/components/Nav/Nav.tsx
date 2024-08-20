@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Container } from "../Container";
-import ArrowIcon from "../assets/ArrowIcon.svg";
+import ArrowIcon from "../../assets/ArrowIcon.svg";
 import { VisuallyHidden } from "../VisuallyHidden";
 import { useContext } from "react";
 import { NavContext } from "./NavProvider";
