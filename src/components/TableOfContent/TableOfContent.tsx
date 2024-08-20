@@ -20,8 +20,6 @@ export type TableOfContentItem = {
 
 export function TableOfContent() {
   const { items } = useContext(TableOfContentContext);
-  const location = useLocation();
-  const navigate = useNavigate();
 
   return (
     <TableOfContentWrapper aria-label="Table of content">
@@ -53,6 +51,7 @@ function TableOfContentItem({
   isChildren?: boolean;
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <ListItemWrapper

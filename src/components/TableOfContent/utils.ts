@@ -35,7 +35,7 @@ export const getLinkColor = (
   }
 };
 
-export const getListItemTextColor = (
+export const getListItemIndicatorTextColor = (
   isActive = false,
   isDone = false
 ): keyof DefaultTheme["colors"] => {

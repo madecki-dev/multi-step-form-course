@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   getLinkColor,
   getListItemStatusIndicator,
-  getListItemTextColor,
+  getListItemIndicatorTextColor,
   ListItemProps,
 } from "./utils";
 
@@ -36,7 +36,7 @@ export const ListItemWrapper = styled.div<ListItemProps>`
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   color: ${({ theme, isActive, isDone }) =>
-    theme.colors[getListItemTextColor(isActive, isDone)]};
+    theme.colors[getListItemIndicatorTextColor(isActive, isDone)]};
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
 
