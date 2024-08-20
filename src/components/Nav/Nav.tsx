@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { Container } from "./Container";
+import { Container } from "../Container";
 import ArrowIcon from "../assets/ArrowIcon.svg";
-import { VisuallyHidden } from "./VisuallyHidden";
+import { VisuallyHidden } from "../VisuallyHidden";
 import { useContext } from "react";
-import { NavContext } from "../NavProvider";
-import Badge from "./Badge";
+import { NavContext } from "./NavProvider";
+import Badge from "../Badge";
 
 export default function Nav() {
   const { title } = useContext(NavContext);
@@ -17,11 +17,12 @@ export default function Nav() {
           <VisuallyHidden>Return</VisuallyHidden>
         </ReturnButton>
 
-        <Title>{title}</Title>
+        {title && <Title>{title}</Title>}
 
+        {/* TODO: Make badge editable from NavContext */}
         <Badge text="In progress" />
       </Content>
-    </Wrapper> 
+    </Wrapper>
   );
 }
 
