@@ -11,12 +11,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, showLabel, ...rest }, ref) => {
     const LabelWrapper = showLabel ? Fragment : VisuallyHidden;
 
+    const id = rest.id || label.toLowerCase().replace(" ", "-");
+
     return (
       <>
         <LabelWrapper>
-          <label htmlFor={rest.id}>{label}</label>
+          <label htmlFor={id}>{label}</label>
         </LabelWrapper>
-        <InputElement ref={ref} {...rest} />
+        <InputElement ref={ref} {...rest} id={id} />
       </>
     );
   }
