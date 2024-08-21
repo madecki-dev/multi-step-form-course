@@ -1,30 +1,14 @@
-# React + TypeScript + Vite
+# Zadania do zrobienia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Czemu indicator jest zawsze zielony?
 
-Currently, two official plugins are available:
+1. Indicator w TableOfContent jest zawsze zielony (ten pierwszy). Napraw ten błąd.
+2. Spraw by stan TableOfContent też się zapisywał i utrzymywał dzięki localStorage.
+3. *Dodaj przycisk resetowania formularza (całego). 
+4. **Spraw by formularz był resetowany na podstawie listy itemów w TableOfContent (zamiast ręcznego podawania kluczy)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Dokończenie formularza
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Dodaj wszystkie potrzebne pola zgodnie z designem. Nie musisz tworzyć "custom selecta", możesz użyć natywnego i spróbować go ostylować możliwie podobnie do tego na designie. 
+2. ***Spróbuj zaimplementować "cusom select". Są o tym artykuły na Google, bo jest to powszechny problem do rozwiązania - ale nie będzie łatwo. Pamiętaj o `ref`!
+3. Wyświetl podsumowanie danych wprowadzonych we wszystkich stepach formularza (Overview)

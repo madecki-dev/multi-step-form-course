@@ -12,7 +12,7 @@ import { TableOfContentProvider } from "../../components/TableOfContent/TableOfC
 
 const tableOfContents: TableOfContentItem[] = [
   {
-    id: "1",
+    id: "businessAddress",
     title: "Business structure",
     path: "/business-structure",
     isDone: true,
